@@ -1,0 +1,59 @@
+﻿<!DOCTYPE>
+<html>
+	<head>
+		<title>dialog  对话框弹层</title>
+		<link rel="stylesheet" type="text/css" href="../src/dialog.css">
+	</head>
+	<body>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+		<input type="button" id="btn_dialog" value="打开浮层"/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+		<div id="dialog-content">这是内容</div>
+		<script src="../src/jquery-1.9.1.min.js"></script>
+		<script src="../src/dialog.js"></script>
+		<script>
+		var dialog = new Dialog();
+		dialog.init({target:"#dialog-content",trigger:"#btn_dialog",mask:true,width:500,height:300});
+		</script>
+	</body>
+</html>
