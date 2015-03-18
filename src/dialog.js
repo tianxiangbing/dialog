@@ -8,8 +8,9 @@
 function Dialog() {
 	var rnd = Math.random().toString().replace('.', '');
 	this.id = 'dialog_' + rnd;
-	this.settings={};
-	this.settings.closeTpl = $('<span class="ui-dialog-close js-dialog-close">X</span>')
+	this.settings = {};
+	this.settings.closeTpl = $('<span class="ui-dialog-close js-dialog-close">x</span>');
+	this.settings.titleTpl = $('<div class="ui-dialog-title"></div>');
 }
 Dialog.prototype = {
 	init: function(settings) {
@@ -21,12 +22,23 @@ Dialog.prototype = {
 		}
 		$('body').append('<div class="ui-dialog" id="' + this.id + '"></div>');
 		this.dialogContainer = $('#' + this.id);
+		var zIndex = this.settings.zIndex || 10;
+		this.dialogContainer.css({
+			'zIndex': zIndex
+		});
+		this.mask.css({
+			'zIndex': zIndex - 1
+		});
+		if (this.settings.closeTpl) {
+			this.dialogContainer.append(this.settings.closeTpl);
+		}
+		if(this.settings.title){
+			this.dialogContainer.append(this.settings.titleTpl);
+			this.settings.titleTpl.html(this.settings.title);
+		}
 		this.bindEvent();
 		if (this.settings.show) {
 			this.show();
-		}
-		if(this.settings.closeTpl){
-			this.dialogContainer.append(this.settings.closeTpl);
 		}
 	},
 	bindEvent: function() {
@@ -36,7 +48,7 @@ Dialog.prototype = {
 				_this.show();
 			});
 		};
-		$(this.dialogContainer).delegate('.js-dialog-close','click',function(){
+		$(this.dialogContainer).delegate('.js-dialog-close', 'click', function() {
 			_this.hide();
 			return false;
 		})
@@ -46,12 +58,22 @@ Dialog.prototype = {
 		$(window).scroll(function() {
 			_this.setPosition();
 		})
+		$(window).keydown(function(e){
+			if(e.keyCode ===27){
+				_this.hide();
+			}
+		});
 	},
 	hide: function() {
-		if (typeof this.settings.target ==="object" ){
+		var _this = this;
+		if (typeof this.settings.target === "object") {
 			this.dailogContent.append('body');
 		}
-		this.dialogContainer.addClass("zoomOut").removeClass('zoomIn');
+		this.dialogContainer.removeClass('zoomIn').addClass("zoomOut");
+		setTimeout(function() {
+			_this.dialogContainer.hide();
+		}, 500);
+		this.mask.hide();
 	},
 	show: function() {
 		if (typeof this.settings.target === "string") {
@@ -63,6 +85,8 @@ Dialog.prototype = {
 		} else {
 			this.dailogContent = this.settings.target;
 		}
+		this.mask.show();
+		this.dailogContent.show();
 		this.height = this.settings.height || this.dialogContainer.height();
 		this.width = this.settings.width || this.dialogContainer.width();
 		this.dialogContainer.append(this.dailogContent).show().css({

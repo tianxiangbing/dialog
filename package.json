@@ -5,7 +5,7 @@
 	"version": "1.0.0",
 	"author": {
 		"name": "田想兵",
-		"url": "http://www.lovewebgames.com/jsmodule/calendar.html"
+		"url": "http://www.lovewebgames.com/jsmodule/dialog.html"
 	},
 	"devDependencies": {
 		"grunt-contrib-concat": "^0.5.1",
