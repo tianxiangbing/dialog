@@ -32,7 +32,7 @@ Dialog.prototype = {
 		if (this.settings.closeTpl) {
 			this.dialogContainer.append(this.settings.closeTpl);
 		}
-		if(this.settings.title){
+		if (this.settings.title) {
 			this.dialogContainer.append(this.settings.titleTpl);
 			this.settings.titleTpl.html(this.settings.title);
 		}
@@ -58,8 +58,8 @@ Dialog.prototype = {
 		$(window).scroll(function() {
 			_this.setPosition();
 		})
-		$(window).keydown(function(e){
-			if(e.keyCode ===27){
+		$(window).keydown(function(e) {
+			if (e.keyCode === 27) {
 				_this.hide();
 			}
 		});
@@ -68,6 +68,9 @@ Dialog.prototype = {
 		var _this = this;
 		if (typeof this.settings.target === "object") {
 			this.dailogContent.append('body');
+		}
+		if (this.settings.beforeHide) {
+			this.settings.beforeHide.call(this, this.dailogContent);
 		}
 		this.dialogContainer.removeClass('zoomIn').addClass("zoomOut");
 		setTimeout(function() {
@@ -84,6 +87,9 @@ Dialog.prototype = {
 			}
 		} else {
 			this.dailogContent = this.settings.target;
+		}
+		if (this.settings.beforeShow) {
+			this.settings.beforeShow.call(this, this.dailogContent);
 		}
 		this.mask.show();
 		this.dailogContent.show();
