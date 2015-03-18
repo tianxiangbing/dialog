@@ -96,8 +96,11 @@ Dialog.prototype = {
 		this.setPosition();
 	},
 	setPosition: function() {
-		var top = (document.body.clientHeight - this.height) / 2 + document.body.scrollTop;
-		var left = (document.body.clientWidth - this.width) / 2;
+		this.mask.height(document.documentElement.scrollHeight || document.body.scrollHeight);
+		var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+		var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+		var top = (clientHeight - this.height) / 2 + document.body.scrollTop;
+		var left = (clientWidth - this.width) / 2;
 		if (left < 0) {
 			left = 0;
 		}
