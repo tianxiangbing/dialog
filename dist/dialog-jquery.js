@@ -110,7 +110,7 @@ Dialog.prototype = {
 		})
 	}
 }
-(function($) {
+;(function($) {
 	$.fn.Dialog = function(settings) {
 		var list = [];
 		$(this).each(function() {
