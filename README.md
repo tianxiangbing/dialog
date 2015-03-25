@@ -1,6 +1,6 @@
 # dialog
 js dialog弹窗
-例子见[DEMO](http://www.lovewebgames.com/jsmodule/dailog.html)  
+例子见[DEMO](http://www.lovewebgames.com/jsmodule/dialog.html)  
 #用法
 		<input type="button" id="btn_dialog" value="打开浮层"/>
 		<div id="dialog-content" style="display:none;">这是内容</div>
