@@ -61,8 +61,12 @@ Dialog.prototype = {
 	bindEvent: function() {
 		var _this = this;
 		if (this.settings.trigger) {
-			$(this.settings.trigger).click(_this.show);
-			_this.touch($(this.settings.trigger), _this.show);
+			$(this.settings.trigger).click(function() {
+				_this.show()
+			});
+			_this.touch($(this.settings.trigger), function() {
+				_this.show()
+			});
 		};
 		$(this.dialogContainer).delegate('.js-dialog-close', 'click', function() {
 			_this.hide();
