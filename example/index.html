@@ -2,9 +2,20 @@
 <html>
 	<head>
 		<title>dialog  对话框弹层</title>
+		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, user-scalable=0, width=device-width"/>
 		<link rel="stylesheet" type="text/css" href="../src/dialog.css">
 	</head>
 	<body>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
 		<br/>
 		<br/>
 		<br/>
@@ -19,10 +30,26 @@
 		dialog.init({target:"#dialog-content",trigger:"#btn_dialog",mask:true,width:500,height:300,title:'标题'});
 		</script>
 		<input type="button" id="btn_dialogjquery" value="jq打开浮层"/>
+		<input type="button" id="btn_alert" value="alert"/>
+		<input type="button" id="btn_alert2" value="alert定时关闭"/>
 		<div id="dialog-contentjq" style="display:none;">这是内容22</div>
 		<script src="../src/dialog-jquery.js"></script>
 		<script>
 		$('#btn_dialogjquery').Dialog({target:"#dialog-contentjq",mask:true,width:500,height:300,title:'标题'})
+		$('#btn_alert').click(function(){
+			// $.Dialog({
+			// 	target: '<p class="ui-alert-title">选好商品才能上传素材哦</p><p class="ui-dialog-action"><button class="ui-alert-submit  js-dialog-close">确定</button></p>',
+			// 	mask: true,
+			// 	width: 250,
+			// 	height: 150,
+			// 	animate: true,
+			// 	show: true
+			// });
+			$.alert('选好商品才能上传素材哦',true)
+		});
+		$('#btn_alert2').click(function(){
+			$.alert('选好商品才能上传素材哦')
+		});
 		</script>
 		<br/>
 		<br/>

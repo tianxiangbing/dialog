@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 	config.publishVersion = config.pkg.version;
 	config.uglify = {
 		options: {
-			banner: '/*! <%= pkg.name %> <%=pkg.family%> <%=pkg.author.url%> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+			banner: '/*! version:<%=pkg.version%>  <%= pkg.name %> name:<%=pkg.author.name%> qq:<%=pkg.author.qq%> <%=pkg.family%> <%=pkg.author.url%> <%= grunt.template.today("yyyy-mm-dd") %>*/\n'
 		},
 		build: {
 			src: ['src/<%= pkg.name %>.js', '!*.min.css'],
@@ -52,8 +52,7 @@ module.exports = function(grunt) {
 	config.concat = {
 		options: {
 			stripBanners: true,
-			banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%=pkg.family%> - <%=pkg.author.url%> ' +
-				'<%= grunt.template.today("yyyy-mm-dd") %> */\n',
+			banner: '/*! version:<%=pkg.version%>  <%= pkg.name %> name:<%=pkg.author.name%> qq:<%=pkg.author.qq%> <%=pkg.family%> <%=pkg.author.url%> <%= grunt.template.today("yyyy-mm-dd") %>*/\n'
 		},
 		dist: {
 			src: ['src/dialog.js', 'src/dialog-jquery.js'],
