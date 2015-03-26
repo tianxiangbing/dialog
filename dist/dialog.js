@@ -155,8 +155,8 @@ Dialog.prototype = {
 			this.height = this.settings.height || this.dialogContainer.outerHeight();
 			this.width = this.settings.width || this.dialogContainer.outerWidth();
 			this.mask.height(document.documentElement.scrollHeight || document.body.scrollHeight);
-			var clientHeight = document.body.clientHeight || document.documentElement.clientHeight;
-			var clientWidth = document.body.clientWidth || document.documentElement.clientWidth;
+			var clientHeight =window.innerHeight;//可视区域
+			var clientWidth = window.innerWidth;
 			var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
 			var top = (clientHeight - this.height) / 2 + scrollTop;
 			var left = (clientWidth - this.width) / 2;

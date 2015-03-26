@@ -1,4 +1,4 @@
-/*! version:1.0.1  calendar name:田想兵 qq: tianxiangbing http://www.lovewebgames.com/jsmodule/dialog.html 2015-03-25*/
+/*! version:1.0.1  calendar name:田想兵 qq: tianxiangbing http://www.lovewebgames.com/jsmodule/dialog.html 2015-03-26*/
 function Dialog() {
 	var rnd = Math.random().toString().replace('.', '');
 	this.id = 'dialog_' + rnd;
@@ -149,8 +149,8 @@ Dialog.prototype = {
 			this.height = this.settings.height || this.dialogContainer.outerHeight();
 			this.width = this.settings.width || this.dialogContainer.outerWidth();
 			this.mask.height(document.documentElement.scrollHeight || document.body.scrollHeight);
-			var clientHeight = document.body.clientHeight || document.documentElement.clientHeight;
-			var clientWidth = document.body.clientWidth || document.documentElement.clientWidth;
+			var clientHeight =window.innerHeight;//可视区域
+			var clientWidth = window.innerWidth;
 			var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
 			var top = (clientHeight - this.height) / 2 + scrollTop;
 			var left = (clientWidth - this.width) / 2;
