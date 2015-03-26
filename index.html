@@ -32,7 +32,7 @@
 <a id="dialog" class="anchor" href="#dialog" aria-hidden="true"><span class="octicon octicon-link"></span></a>dialog</h1>
 
 <p>js dialog弹窗
-例子见<a href="http://www.lovewebgames.com/jsmodule/dailog.html">DEMO</a>  </p>
+例子见<a href="http://www.lovewebgames.com/jsmodule/dialog.html">DEMO</a>  </p>
 
 <h1>
 <a id="用法" class="anchor" href="#%E7%94%A8%E6%B3%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>用法</h1>
@@ -56,6 +56,37 @@
     &lt;script&gt;
     $('#btn_dialogjquery').Dialog({target:"#dialog-contentjq",mask:true,width:500,height:300,title:'标题'})
     &lt;/script&gt;
+</code></pre>
+
+<h1>
+<a id="继承类alert和confirm提示jquery模式下" class="anchor" href="#%E7%BB%A7%E6%89%BF%E7%B1%BBalert%E5%92%8Cconfirm%E6%8F%90%E7%A4%BAjquery%E6%A8%A1%E5%BC%8F%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>继承类alert和confirm提示(jquery模式下)：</h1>
+
+<pre><code>    *html:
+    &lt;input type="button" id="btn_alert" value="alert"/&gt;
+    &lt;input type="button" id="btn_alert2" value="alert定时关闭"/&gt;
+    &lt;input type="button" id="btn_confirm" value="confirm三种按钮"/&gt;
+    &lt;input type="button" id="btn_confirmdefault" value="confirm默认"/&gt;
+    *js:
+    $('#btn_alert').click(function(){
+        $.alert('选好商品才能上传素材哦',true,function(){
+            alert('你点击了ok')
+        })
+    });
+    $('#btn_alert2').click(function(){
+        $.alert('选好商品才能上传素材哦')
+    });
+    $('#btn_confirm').click(function(){
+        $.confirm('下载全部 9 张图片至本地相册?&lt;div class="confirm-title2"&gt;文字内容已复制&lt;/div&gt;',[{yes:"是"},{no:'否'},{close:'关闭'}],function(type){
+            $.alert('您点击了'+type);
+            this.hide();
+        });
+    })
+    $('#btn_confirmdefault').click(function(){
+        $.confirm('你确定要删除这条消息吗? ',null,function(type){
+            $.alert('您点击了'+type);
+            this.hide();
+        });
+    })
 </code></pre>
 
 <h1>
