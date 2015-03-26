@@ -31,8 +31,10 @@
 .ui-dialog-submit,.ui-alert-submit,.ui-confirm-submit{background-color: #e05658;margin-right: 50px;}
 .ui-dialog-cancel{background-color:#999999;}
 .ui-dialog-action{text-align: center;margin-top: 20px;}
-.ui-dialog-action button{display: inline-block;border-radius: 5px;padding:5px 20px;color:#fff;border:none;outline: none;cursor: pointer;display: table-cell;width: 30%;margin-right: 3%;box-sizing: border-box;}
+.ui-dialog-action button{display: inline-block;border-radius: 5px;padding:5px 20px;color:#fff;border:none;outline: none;cursor: pointer;display: table-cell;margin-right: 3%;box-sizing: border-box;}
+.ui-confirm button{width:30%;}
 .ui-alert{border-radius: 5px;overflow: hidden;padding:20px;}
 .ui-alert .ui-dialog-close{display: none;}
 .ui-alert .ui-alert-submit{margin: 0 auto;}
 .ui-alert-info{text-align: center;margin-top:20px;}
+.ui-confirm-close,.ui-confirm-no{background-color: #999999;}

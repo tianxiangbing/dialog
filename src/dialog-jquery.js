@@ -103,7 +103,7 @@
 		}
 	};
 	/*alert*/
-	$.alert = function(content, button, timer, callback) {
+	$.alert = function(content, button, callback, timer) {
 		$.Dialog({
 			content: content,
 			button: button,

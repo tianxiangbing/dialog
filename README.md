@@ -17,6 +17,33 @@ js dialog弹窗
 		<script>
 		$('#btn_dialogjquery').Dialog({target:"#dialog-contentjq",mask:true,width:500,height:300,title:'标题'})
 		</script>
+#继承类alert和confirm提示(jquery模式下)：
+		*html:
+		<input type="button" id="btn_alert" value="alert"/>
+		<input type="button" id="btn_alert2" value="alert定时关闭"/>
+		<input type="button" id="btn_confirm" value="confirm三种按钮"/>
+		<input type="button" id="btn_confirmdefault" value="confirm默认"/>
+		*js:
+		$('#btn_alert').click(function(){
+			$.alert('选好商品才能上传素材哦',true,function(){
+				alert('你点击了ok')
+			})
+		});
+		$('#btn_alert2').click(function(){
+			$.alert('选好商品才能上传素材哦')
+		});
+		$('#btn_confirm').click(function(){
+			$.confirm('下载全部 9 张图片至本地相册?<div class="confirm-title2">文字内容已复制</div>',[{yes:"是"},{no:'否'},{close:'关闭'}],function(type){
+				$.alert('您点击了'+type);
+				this.hide();
+			});
+		})
+		$('#btn_confirmdefault').click(function(){
+			$.confirm('你确定要删除这条消息吗? ',null,function(type){
+				$.alert('您点击了'+type);
+				this.hide();
+			});
+		})
 #属性或方法
 ##属性
 ###trigger:

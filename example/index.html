@@ -39,20 +39,22 @@
 		<script>
 		$('#btn_dialogjquery').Dialog({target:"#dialog-contentjq",mask:true,width:500,height:300,title:'标题'})
 		$('#btn_alert').click(function(){
-			$.alert('选好商品才能上传素材哦',true)
+			$.alert('选好商品才能上传素材哦',true,function(){
+				alert('你点击了ok')
+			})
 		});
 		$('#btn_alert2').click(function(){
 			$.alert('选好商品才能上传素材哦')
 		});
 		$('#btn_confirm').click(function(){
-			$.confirm('下载全部 9 张图片至本地相册?<div class="confirm-title2">文字内容已复制</div>',[{no:'取消'},{yes:"确定"},{close:'关闭'}],function(type){
-				alert('您点击了'+type);
+			$.confirm('下载全部 9 张图片至本地相册?<div class="confirm-title2">文字内容已复制</div>',[{yes:"是"},{no:'否'},{close:'关闭'}],function(type){
+				$.alert('您点击了'+type);
 				this.hide();
 			});
 		})
 		$('#btn_confirmdefault').click(function(){
 			$.confirm('你确定要删除这条消息吗? ',null,function(type){
-				alert('您点击了'+type);
+				$.alert('您点击了'+type);
 				this.hide();
 			});
 		})
