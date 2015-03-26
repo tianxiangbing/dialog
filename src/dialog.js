@@ -132,9 +132,6 @@ Dialog.prototype = {
 		} else {
 			this.dailogContent = this.settings.target;
 		}
-		if (this.settings.beforeShow) {
-			this.settings.beforeShow.call(this, this.dialogContainer);
-		}
 		this.mask.show();
 		this.dailogContent.show();
 		this.height = this.settings.height || 'auto' //this.dialogContainer.height();
@@ -143,6 +140,9 @@ Dialog.prototype = {
 			height: this.height,
 			width: this.width
 		});
+		if (this.settings.beforeShow) {
+			this.settings.beforeShow.call(this, this.dialogContainer);
+		}
 		this.showed = true;
 		this.setPosition();
 		if (this.settings.animate) {
@@ -152,6 +152,7 @@ Dialog.prototype = {
 	setPosition: function() {
 		if (this.showed) {
 			var _this = this;
+			this.dialogContainer.show();
 			this.height = this.settings.height || this.dialogContainer.outerHeight();
 			this.width = this.settings.width || this.dialogContainer.outerWidth();
 			this.mask.height(document.documentElement.scrollHeight || document.body.scrollHeight);

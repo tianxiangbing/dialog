@@ -126,9 +126,6 @@ Dialog.prototype = {
 		} else {
 			this.dailogContent = this.settings.target;
 		}
-		if (this.settings.beforeShow) {
-			this.settings.beforeShow.call(this, this.dialogContainer);
-		}
 		this.mask.show();
 		this.dailogContent.show();
 		this.height = this.settings.height || 'auto' //this.dialogContainer.height();
@@ -137,6 +134,9 @@ Dialog.prototype = {
 			height: this.height,
 			width: this.width
 		});
+		if (this.settings.beforeShow) {
+			this.settings.beforeShow.call(this, this.dialogContainer);
+		}
 		this.showed = true;
 		this.setPosition();
 		if (this.settings.animate) {
@@ -146,6 +146,7 @@ Dialog.prototype = {
 	setPosition: function() {
 		if (this.showed) {
 			var _this = this;
+			this.dialogContainer.show();
 			this.height = this.settings.height || this.dialogContainer.outerHeight();
 			this.width = this.settings.width || this.dialogContainer.outerWidth();
 			this.mask.height(document.documentElement.scrollHeight || document.body.scrollHeight);
@@ -192,12 +193,15 @@ Dialog.prototype = {
 		return list;
 	};
 	$.Dialog = function(settings) {
-		if (settings.type = "alert") {
+		if (settings.type === "alert") {
 			var dialog = new Dialog();
 			var html = '<div class="ui-alert-title">' + settings.content + '</div>';
 			var action = '';
 			if (settings.button) {
-				action = '<p class="ui-dialog-action"><button class="ui-alert-submit  js-dialog-close">确定</button></p>';
+				if (typeof settings.button == 'boolean') {
+					settings.button = '确定';
+				};
+				action = '<p class="ui-dialog-action"><button class="ui-alert-submit  js-dialog-close">' + settings.button + '</button></p>';
 			} else if (!settings.timer) {
 				settings.timer = 3000;
 			}
@@ -221,6 +225,55 @@ Dialog.prototype = {
 				}, settings.timer);
 			}
 		}
+		if (settings.type === "confirm") {
+			var dialog = new Dialog();
+			var html = '<div class="ui-confirm-title">' + settings.content + '</div>';
+			var action = '';
+			if (!settings.buttons) {
+				settings.buttons = [{
+					'yes': '确定'
+				}, {
+					'no': '取消'
+				}];
+			};
+			var btnstr = '';
+			for (var i = 0, l = settings.buttons.length; i < l; i++) {
+				var item = settings.buttons[i];
+				if (item.yes) {
+					btnstr += '<button class="ui-confirm-submit " data-type="yes">' + item.yes + '</button>';
+				}
+				if (item.no) {
+					btnstr += '<button class="ui-confirm-no" data-type="no">' + item.no + '</button>';
+				}
+				if (item.close) {
+					btnstr += '<button class="ui-confirm-close js-dialog-close" data-type="close">' + item.close + '</button>';
+				}
+			}
+			action = '<p class="ui-dialog-action">' + btnstr + '</p>';
+			html += action;
+			var options = $.extend({
+				target: html,
+				animate: true,
+				show: true,
+				mask: true,
+				className: "ui-alert",
+				afterHide: function(c) {
+					this.dispose();
+				},
+				beforeShow: function(c) {
+					dialog.touch($('.ui-confirm-submit', c), function() {
+						settings.callback && settings.callback.call(dialog, 'yes', c);
+					});
+					dialog.touch($('.ui-confirm-no', c), function() {
+						settings.callback && settings.callback.call(dialog, 'no', c);
+					});
+					dialog.touch($('.ui-confirm-close', c), function() {
+						settings.callback && settings.callback.call(dialog, 'close', c);
+					});
+				}
+			}, settings);
+			dialog.init(options);
+		}
 	};
 	/*alert*/
 	$.alert = function(content, button, timer, callback) {
@@ -228,7 +281,19 @@ Dialog.prototype = {
 			content: content,
 			button: button,
 			timer: timer,
-			callback: callback
+			callback: callback,
+			type: 'alert'
+		});
+	}
+	/*
+	buttons :[{yes:"确定"},{no:'取消'},{close:'关闭'}]
+	*/
+	$.confirm = function(content, buttons, callback) {
+		$.Dialog({
+			content: content,
+			buttons: buttons,
+			callback: callback,
+			type: 'confirm'
 		});
 	}
 })(jQuery);
