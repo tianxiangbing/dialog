@@ -109,6 +109,7 @@
 			button: button,
 			timer: timer,
 			callback: callback,
+			zIndex:100,
 			type: 'alert'
 		});
 	}
@@ -120,7 +121,8 @@
 			content: content,
 			buttons: buttons,
 			callback: callback,
+			zIndex:100,
 			type: 'confirm'
 		});
 	}
-})(jQuery);
+})($);
