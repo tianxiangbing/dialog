@@ -1,4 +1,6 @@
-/*! version:1.0.1  calendar name:田想兵 qq: tianxiangbing http://www.lovewebgames.com/jsmodule/dialog.html 2015-04-01*/
+/*! calendar author:tianxiangbing email:55342775@qq.com
+* demo:http://www.lovewebgames.com/jsmodule/dialog.html 
+* git:https://github.com/tianxiangbing/dialog  2015-04-01 */
 function Dialog() {
 	var rnd = Math.random().toString().replace('.', '');
 	this.id = 'dialog_' + rnd;
