@@ -257,16 +257,16 @@ Dialog.prototype = {
 			for (var i = 0, l = settings.buttons.length; i < l; i++) {
 				var item = settings.buttons[i];
 				if (item.yes) {
-					btnstr += '<button class="ui-confirm-submit " data-type="yes">' + item.yes + '</button>';
+					btnstr += '<td><button class="ui-confirm-submit " data-type="yes">' + item.yes + '</button></td>';
 				}
 				if (item.no) {
-					btnstr += '<button class="ui-confirm-no" data-type="no">' + item.no + '</button>';
+					btnstr += '<td><button class="ui-confirm-no" data-type="no">' + item.no + '</button></td>';
 				}
 				if (item.close) {
-					btnstr += '<button class="ui-confirm-close js-dialog-close" data-type="close">' + item.close + '</button>';
+					btnstr += '<td><button class="ui-confirm-close js-dialog-close" data-type="close">' + item.close + '</button></td>';
 				}
 			}
-			action = '<p class="ui-dialog-action">' + btnstr + '</p>';
+			action = '<table class="ui-dialog-action"><tr>' + btnstr + '</tr></table>';
 			html += action;
 			var options = $.extend({
 				target: html,
