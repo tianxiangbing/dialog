@@ -153,9 +153,9 @@ Dialog.prototype = {
 		if (this.showed) {
 			var _this = this;
 			this.dialogContainer.show();
-			this.height = this.settings.height || (this.dialogContainer.outerHeight&&this.dialogContainer.outerHeight())|| this.dialogContainer.height();
-			this.width = this.settings.width || (this.dialogContainer.outerWidth&&this.dialogContainer.outerWidth())|| this.dialogContainer.width();
-			this.mask.height(document.documentElement.scrollHeight || document.body.scrollHeight);
+			this.height = this.settings.height || (this.dialogContainer.outerHeight && this.dialogContainer.outerHeight()) || this.dialogContainer.height();
+			this.width = this.settings.width || (this.dialogContainer.outerWidth && this.dialogContainer.outerWidth()) || this.dialogContainer.width();
+			/*this.mask.height(Math.max(document.documentElement.scrollHeight , document.body.scrollHeight));
 			var clientHeight =window.innerHeight|| document.documentElement.clientHeight;//可视区域
 			var clientWidth = window.innerWidth|| document.documentElement.clientWidth;
 			var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
@@ -180,6 +180,23 @@ Dialog.prototype = {
 					});
 					clearTimeout(_this.timer);
 				}, 100);
+			}*/
+			var ml = -this.width / 2;
+			var mt = -this.height/2;
+			_this.dialogContainer.css({
+				position: "fixed",
+				top: "50%",
+				left: "50%",
+				marginTop:mt,
+				marginLeft:  ml
+			});
+			var left = parseInt(_this.dialogContainer.css('left'));
+			var top = parseInt(_this.dialogContainer.css('top'));
+			if (left + ml < 0) {
+				_this.dialogContainer.css('left', -ml);
+			}
+			if(top+mt <0){
+				_this.dialogContainer.css('top', -mt);
 			}
 		}
 	}
