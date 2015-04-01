@@ -181,23 +181,19 @@ Dialog.prototype = {
 					clearTimeout(_this.timer);
 				}, 100);
 			}*/
-			var ml = -this.width / 2;
-			var mt = -this.height/2;
+			var clientHeight = Math.min(document.documentElement.clientHeight, document.body.clientHeight);
+			var clientWidth = Math.min(document.documentElement.clientWidth, document.body.clientWidth);
+			var ml = this.width / 2;
+			var mt = this.height / 2;
+			var left = clientWidth / 2 - ml;
+			var top = clientHeight / 2 - mt;
+			left = Math.max(0,left);
+			top = Math.max(0,top);
 			_this.dialogContainer.css({
 				position: "fixed",
-				top: "50%",
-				left: "50%",
-				marginTop:mt,
-				marginLeft:  ml
+				top:top,
+				left: left
 			});
-			var left = parseInt(_this.dialogContainer.css('left'));
-			var top = parseInt(_this.dialogContainer.css('top'));
-			if (left + ml < 0) {
-				_this.dialogContainer.css('left', -ml);
-			}
-			if(top+mt <0){
-				_this.dialogContainer.css('top', -mt);
-			}
 		}
 	}
 }
