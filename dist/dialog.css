@@ -31,7 +31,7 @@
 .ui-dialog-submit,.ui-alert-submit,.ui-confirm-submit{background-color: #e05658;}
 .ui-dialog-cancel{background-color:#999999;}
 .ui-dialog-action{text-align: center;margin-top: 20px;width:100%;}
-.ui-dialog-action td{text-align: center;width:30%;}
+.ui-dialog-action td{text-align: center;border:none;}
 .ui-dialog-action button{display: inline-block;border-radius: 5px;padding:5px 20px;color:#fff;border:none;outline: none;cursor: pointer;box-sizing: border-box;}
 
 .ui-alert{border-radius: 5px;overflow: hidden;padding:20px;}
