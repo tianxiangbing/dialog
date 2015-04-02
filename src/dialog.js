@@ -49,7 +49,11 @@ Dialog.prototype = {
 	},
 	touch: function(obj, fn) {
 		var move;
-		$(obj).on('click', fn);
+		$(obj).on('click', click);
+
+		function click(e) {
+			return fn.call(this, e);
+		}
 		$(obj).on('touchmove', function(e) {
 			move = true;
 		}).on('touchend', function(e) {
@@ -153,45 +157,25 @@ Dialog.prototype = {
 		if (this.showed) {
 			var _this = this;
 			this.dialogContainer.show();
-			this.height = this.settings.height || (this.dialogContainer.outerHeight && this.dialogContainer.outerHeight()) || this.dialogContainer.height();
-			this.width = this.settings.width || (this.dialogContainer.outerWidth && this.dialogContainer.outerWidth()) || this.dialogContainer.width();
-			/*this.mask.height(Math.max(document.documentElement.scrollHeight , document.body.scrollHeight));
-			var clientHeight =window.innerHeight|| document.documentElement.clientHeight;//可视区域
-			var clientWidth = window.innerWidth|| document.documentElement.clientWidth;
-			var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-			var top = (clientHeight - this.height) / 2 + scrollTop;
-			var left = (clientWidth - this.width) / 2;
-			if (left < 0) {
-				left = 0;
+			this.height = this.settings.height;
+			this.width = this.settings.width;
+			if (isNaN(this.height)) {
+				this.height = (this.dialogContainer.outerHeight && this.dialogContainer.outerHeight()) || this.dialogContainer.height();
 			}
-			if (top < scrollTop) {
-				top = scrollTop;
+			if (isNaN(this.width)) {
+				this.width = (this.dialogContainer.outerWidth && this.dialogContainer.outerWidth()) || this.dialogContainer.width();
 			}
-			_this.dialogContainer.css({
-				top: top,
-				left: left
-			})
-			if (this.settings.animate) {
-				clearTimeout(this.timer);
-				this.timer = setTimeout(function() {
-					_this.dialogContainer.animate({
-						top: top,
-						left: left
-					});
-					clearTimeout(_this.timer);
-				}, 100);
-			}*/
 			var clientHeight = Math.min(document.documentElement.clientHeight, document.body.clientHeight);
 			var clientWidth = Math.min(document.documentElement.clientWidth, document.body.clientWidth);
 			var ml = this.width / 2;
 			var mt = this.height / 2;
 			var left = clientWidth / 2 - ml;
 			var top = clientHeight / 2 - mt;
-			left = Math.max(0,left);
-			top = Math.max(0,top);
+			left = Math.max(0, left);
+			top = Math.max(0, top);
 			_this.dialogContainer.css({
 				position: "fixed",
-				top:top,
+				top: top,
 				left: left
 			});
 		}
