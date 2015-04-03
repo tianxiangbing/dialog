@@ -5,7 +5,8 @@
  * Time: 20:27:54
  * Contact: 55342775@qq.com
  */
-;(function($) {
+;
+(function($) {
 	window.Dialog = function() {
 		var rnd = Math.random().toString().replace('.', '');
 		this.id = 'dialog_' + rnd;
@@ -166,8 +167,8 @@
 				if (isNaN(this.width)) {
 					this.width = (this.dialogContainer.outerWidth && this.dialogContainer.outerWidth()) || this.dialogContainer.width();
 				}
-				var clientHeight = Math.min(document.documentElement.clientHeight, document.body.clientHeight);
-				var clientWidth = Math.min(document.documentElement.clientWidth, document.body.clientWidth);
+				var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+				var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
 				var ml = this.width / 2;
 				var mt = this.height / 2;
 				var left = clientWidth / 2 - ml;
