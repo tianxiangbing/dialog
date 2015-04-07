@@ -4,7 +4,7 @@
 		<title>dialog  对话框弹层</title>
 		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, user-scalable=0, width=device-width"/>
 		<meta name="format-detection" content="telephone=no">
-		<link rel="stylesheet" type="text/css" href="../src/dialog.css">
+		<link rel="stylesheet" type="text/css" href="../dist/dialog.css">
 	</head>
 	<body>
 		<br/>
@@ -23,8 +23,8 @@
 		<br/>
 		<input type="button" id="btn_dialog" value="打开浮层"/>
 		<div id="dialog-content" style="display:none;">这是内容</div>
-		<script src="../src/jquery-1.9.1.min.js"></script>
-		<script src="../src/dialog.js"></script>
+		<script src="../dist/jquery-1.9.1.min.js"></script>
+		<script src="../dist/dialog-jquery.js"></script>
 		<script>
 		var dialog = new Dialog();
 		dialog.init({target:"#dialog-content",trigger:"#btn_dialog",mask:true,width:500,height:300,title:'标题'});
@@ -35,7 +35,6 @@
 		<input type="button" id="btn_confirm" value="confirm三种按钮"/>
 		<input type="button" id="btn_confirmdefault" value="confirm默认"/>
 		<div id="dialog-contentjq" style="display:none;">这是内容22</div>
-		<script src="../src/dialog-jquery.js"></script>
 		<script>
 		$('#btn_dialogjquery').Dialog({target:"#dialog-contentjq",mask:true,width:500,height:300,title:'标题',animate:true})
 		$('#btn_alert').click(function(){

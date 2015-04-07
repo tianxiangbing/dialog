@@ -46,19 +46,23 @@ module.exports = function(grunt) {
 			src: ['*.js', '*.css'],
 			dest: 'dist/',
 			flatten: true,
-			filter: 'isFile',
+			filter: 'isFile'
 		},
+		jquery:{
+			src: 'src/dialog.js',
+			dest: 'dist/dialog-jquery.js'
+		}
 	};
-	config.concat = {
-		options: {
-			stripBanners: true,
-			banner: '/*! <%= pkg.name %> author:<%=pkg.family%> email:<%=pkg.author.email%>\n* demo:<%=pkg.author.url%> \n* git:<%=pkg.git%>  <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-		},
-		dist: {
-			src: ['src/dialog.js', 'src/dialog-jquery.js'],
-			dest: 'dist/dialog-jquery.js',
-		},
-	};
+	// config.concat = {
+	// 	options: {
+	// 		stripBanners: true,
+	// 		banner: '/*! <%= pkg.name %> author:<%=pkg.family%> email:<%=pkg.author.email%>\n* demo:<%=pkg.author.url%> \n* git:<%=pkg.git%>  <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+	// 	},
+	// 	dist: {
+	// 		src: ['src/dialog.js', 'src/dialog-jquery.js'],
+	// 		dest: 'dist/dialog-jquery.js',
+	// 	},
+	// };
 	config.uglify.uplifyJquery = {
 		src: ['dist/dialog-jquery.js'],
 		dest: 'dist/dialog-jquery.min.js'
@@ -84,9 +88,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-concat');
+	// grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// 默认被执行的任务列表。
-	grunt.registerTask('default', ['uglify', 'cssmin', 'copy', 'concat', 'uglify:uplifyJquery']);
+	grunt.registerTask('default', ['uglify', 'cssmin', 'copy', 'uglify:uplifyJquery']);
 };
