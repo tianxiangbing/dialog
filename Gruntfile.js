@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 	config.publishVersion = config.pkg.version;
 	config.uglify = {
 		options: {
-			banner: '/*! <%= pkg.name %> author:<%=pkg.family%> email:<%=pkg.author.email%>\n* demo:<%=pkg.author.url%> \n* git:<%=pkg.git%>  <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+			banner: '/*! <%= pkg.name %>  v<%= pkg.version %>\n* author:<%=pkg.family%> email:<%=pkg.author.email%>\n* demo:<%=pkg.author.url%> \n* git:<%=pkg.git%>  <%= grunt.template.today("yyyy-mm-dd") %> */\n'
 		},
 		build: {
 			src: ['src/<%= pkg.name %>.js', '!*.min.css'],
