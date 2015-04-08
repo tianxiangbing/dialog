@@ -60,6 +60,10 @@
 					settings.callback && settings.callback();
 				}, settings.timer);
 			}
+			alert.touch(alert.mask,function() {
+				alert.dispose();
+				settings.callback && settings.callback();
+			});
 		}
 		if (settings.type === "confirm") {
 			var dialog = new Dialog();

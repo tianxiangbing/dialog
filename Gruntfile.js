@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 			banner: '/*! <%= pkg.name %>  v<%= pkg.version %>\n* author:<%=pkg.family%> email:<%=pkg.author.email%>\n* demo:<%=pkg.author.url%> \n* git:<%=pkg.git%>  <%= grunt.template.today("yyyy-mm-dd") %> */\n'
 		},
 		build: {
-			src: ['src/<%= pkg.name %>.js', '!*.min.css'],
+			src: ['src/<%= pkg.name %>.js', '!*.min.js'],
 			dest: 'dist/<%= pkg.name %>.min.js'
 		}
 	};
@@ -49,8 +49,8 @@ module.exports = function(grunt) {
 			filter: 'isFile'
 		},
 		jquery:{
-			src: 'src/dialog.js',
-			dest: 'dist/dialog-jquery.js'
+			src: 'src/<%= pkg.name %>.js',
+			dest: 'dist/<%= pkg.name %>-jquery.js'
 		}
 	};
 	// config.concat = {
@@ -64,8 +64,8 @@ module.exports = function(grunt) {
 	// 	},
 	// };
 	config.uglify.uplifyJquery = {
-		src: ['dist/dialog-jquery.js'],
-		dest: 'dist/dialog-jquery.min.js'
+		src: ['dist/<%= pkg.name %>.js'],
+		dest: 'dist/<%= pkg.name %>-jquery.min.js'
 	};
 	config.watch={
 		scripts:{
