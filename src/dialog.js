@@ -129,14 +129,14 @@
 	/*
 	buttons :[{yes:"确定"},{no:'取消'},{close:'关闭'}]
 	*/
-	$.confirm = function(content, buttons, callback) {
-		$.Dialog({
+	$.confirm = function(content, buttons, callback,settings) {
+		$.Dialog($.extend({
 			content: content,
 			buttons: buttons,
 			callback: callback,
 			zIndex: 100,
 			type: 'confirm'
-		});
+		},settings));
 	}
 	var Dialog = function() {
 		var rnd = Math.random().toString().replace('.', '');
@@ -230,6 +230,7 @@
 		dispose: function() {
 			this.dialogContainer.remove();
 			this.mask.remove();
+			this.timer && clearInterval(this.timer);
 		},
 		hide: function() {
 			var _this = this;
@@ -238,6 +239,7 @@
 			}
 			this.showed = false;
 			this.mask.hide();
+			this.timer && clearInterval(this.timer);
 			if (this.settings.animate) {
 				this.dialogContainer.removeClass('zoomIn').addClass("zoomOut");
 				setTimeout(function() {
@@ -281,7 +283,15 @@
 				this.settings.beforeShow.call(this, this.dialogContainer);
 			}
 			this.showed = true;
+			$(this.settings.trigger).blur();
+
 			this.setPosition();
+			var _this = this;
+			// $.alert(this.settings.clientWidth)
+			this.timer && clearInterval(this.timer);
+			this.timer = setInterval(function(){
+				_this.setPosition();
+			},1000);
 			if (this.settings.animate) {
 				this.dialogContainer.addClass('zoomIn').removeClass('zoomOut').addClass('animated');
 			}
@@ -298,8 +308,8 @@
 				if (isNaN(this.width)) {
 					this.width = (this.dialogContainer.outerWidth && this.dialogContainer.outerWidth()) || this.dialogContainer.width();
 				}
-				var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
-				var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+				var clientHeight = this.settings.clientHeight || document.documentElement.clientHeight || document.body.clientHeight;
+				var clientWidth = this.settings.clientWidth || document.documentElement.clientWidth || document.body.clientWidth;
 				var ml = this.width / 2;
 				var mt = this.height / 2;
 				var left = clientWidth / 2 - ml;
