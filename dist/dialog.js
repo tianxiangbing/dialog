@@ -1,5 +1,6 @@
 /*
  * Created with Sublime Text 2.
+ * license: http://www.lovewebgames.com/jsmodule/index.html
  * User: 田想兵
  * Date: 2015-03-16
  * Time: 20:27:54
@@ -60,7 +61,7 @@
 					settings.callback && settings.callback();
 				}, settings.timer);
 			}
-			alert.touch(alert.mask,function() {
+			alert.touch(alert.mask, function() {
 				alert.dispose();
 				settings.callback && settings.callback();
 			});
@@ -116,27 +117,43 @@
 		}
 	};
 	/*alert*/
-	$.alert = function(content, button, callback, timer) {
-		$.Dialog({
-			content: content,
-			button: button,
-			timer: timer,
-			callback: callback,
+	$.alert = function(content, button, callback, timer, settings) {
+		var options = {};
+		var defaults = {
 			zIndex: 100,
 			type: 'alert'
-		});
+		};
+		if (typeof content == 'object') {
+			options = $.extend(defaults, content);
+		} else {
+			options = $.extend(defaults, {
+				content: content,
+				button: button,
+				timer: timer,
+				callback: callback
+			});
+		}
+		$.Dialog($.extend(options, settings));
 	}
 	/*
 	buttons :[{yes:"确定"},{no:'取消'},{close:'关闭'}]
 	*/
-	$.confirm = function(content, buttons, callback,settings) {
-		$.Dialog($.extend({
-			content: content,
-			buttons: buttons,
-			callback: callback,
+	$.confirm = function(content, buttons, callback, settings) {
+		var options = {};
+		var defaults = {
 			zIndex: 100,
 			type: 'confirm'
-		},settings));
+		};
+		if (typeof content == 'object') {
+			options = $.extend(defaults, content);
+		} else {
+			options = $.extend(defaults, {
+				content: content,
+				buttons: buttons,
+				callback: callback
+			});
+		}
+		$.Dialog($.extend(options, settings));
 	}
 	var Dialog = function() {
 		var rnd = Math.random().toString().replace('.', '');
@@ -215,12 +232,12 @@
 				_this.hide();
 				return false;
 			})
-			$(window).resize(function() {
-				_this.setPosition();
-			});
-			$(window).scroll(function() {
-				_this.setPosition();
-			})
+			// $(window).resize(function() {
+			// 	_this.setPosition();
+			// });
+			// $(window).scroll(function() {
+			// 	_this.setPosition();
+			// })
 			$(window).keydown(function(e) {
 				if (e.keyCode === 27 && _this.showed) {
 					_this.hide();
@@ -289,9 +306,9 @@
 			var _this = this;
 			// $.alert(this.settings.clientWidth)
 			this.timer && clearInterval(this.timer);
-			this.timer = setInterval(function(){
+			this.timer = setInterval(function() {
 				_this.setPosition();
-			},1000);
+			}, 1000);
 			if (this.settings.animate) {
 				this.dialogContainer.addClass('zoomIn').removeClass('zoomOut').addClass('animated');
 			}
