@@ -228,7 +228,7 @@
 					_this.show()
 				});
 			};
-			$(this.dialogContainer).delegate('.js-dialog-close', 'click', function() {
+			$(this.dialogContainer).on('click','.js-dialog-close', function() {
 				_this.hide();
 				return false;
 			})
