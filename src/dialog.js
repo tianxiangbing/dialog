@@ -62,7 +62,7 @@
 				}, settings.timer);
 			}
 			alert.touch(alert.mask, function() {
-				alert.dispose();
+				alert.hide();
 				settings.callback && settings.callback();
 			});
 		}
@@ -118,26 +118,26 @@
 	};
 	/*alert*/
 	$.alert = function(content, button, callback, timer, settings) {
-		var options = {};
-		var defaults = {
-			zIndex: 100,
-			type: 'alert'
-		};
-		if (typeof content == 'object') {
-			options = $.extend(defaults, content);
-		} else {
-			options = $.extend(defaults, {
-				content: content,
-				button: button,
-				timer: timer,
-				callback: callback
-			});
+			var options = {};
+			var defaults = {
+				zIndex: 100,
+				type: 'alert'
+			};
+			if (typeof content == 'object') {
+				options = $.extend(defaults, content);
+			} else {
+				options = $.extend(defaults, {
+					content: content,
+					button: button,
+					timer: timer,
+					callback: callback
+				});
+			}
+			$.Dialog($.extend(options, settings));
 		}
-		$.Dialog($.extend(options, settings));
-	}
-	/*
-	buttons :[{yes:"确定"},{no:'取消'},{close:'关闭'}]
-	*/
+		/*
+		buttons :[{yes:"确定"},{no:'取消'},{close:'关闭'}]
+		*/
 	$.confirm = function(content, buttons, callback, settings) {
 		var options = {};
 		var defaults = {
@@ -228,16 +228,16 @@
 					_this.show()
 				});
 			};
-			$(this.dialogContainer).on('click','.js-dialog-close', function() {
-				_this.hide();
-				return false;
-			})
-			// $(window).resize(function() {
-			// 	_this.setPosition();
-			// });
-			// $(window).scroll(function() {
-			// 	_this.setPosition();
-			// })
+			$(this.dialogContainer).on('click', '.js-dialog-close', function() {
+					_this.hide();
+					return false;
+				})
+				// $(window).resize(function() {
+				// 	_this.setPosition();
+				// });
+				// $(window).scroll(function() {
+				// 	_this.setPosition();
+				// })
 			$(window).keydown(function(e) {
 				if (e.keyCode === 27 && _this.showed) {
 					_this.hide();
@@ -331,8 +331,8 @@
 				var mt = this.height / 2;
 				var left = clientWidth / 2 - ml;
 				var top = clientHeight / 2 - mt;
-				left = Math.max(0, left);
-				top = Math.max(0, top);
+				left = Math.floor(Math.max(0, left));
+				top = Math.floor(Math.max(0, top));
 				_this.dialogContainer.css({
 					position: "fixed",
 					top: top,

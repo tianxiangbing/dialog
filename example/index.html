@@ -4,7 +4,7 @@
 		<title>dialog  对话框弹层</title>
 		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, user-scalable=0, width=device-width"/>
 		<meta name="format-detection" content="telephone=no">
-		<link rel="stylesheet" type="text/css" href="../dist/dialog.css">
+		<link rel="stylesheet" type="text/css" href="../src/dialog.css">
 	</head>
 	<body>
 		<br/>
@@ -23,8 +23,8 @@
 		<br/>
 		<input type="button" id="btn_dialog" value="打开浮层"/>
 		<div id="dialog-content" style="display:none;">这是内容</div>
-		<script src="../dist/jquery-1.9.1.min.js"></script>
-		<script src="../dist/dialog-jquery.js"></script>
+		<script src="../src/jquery-1.9.1.min.js"></script>
+		<script src="../src/dialog.js"></script>
 		<script>
 		var dialog = new Dialog();
 		dialog.init({target:"#dialog-content",trigger:"#btn_dialog",mask:true,width:500,height:300,title:'标题'});
@@ -43,7 +43,7 @@
 			})
 		});
 		$('#btn_alert2').click(function(){
-			$.alert('选好商品才能上传素材哦')
+			$.alert('选好商品才能上传素材哦选好商品才能上传素材哦选好商品才能上传素材哦')
 		});
 		$('#btn_confirm').click(function(){
 			$.confirm('下载全部 9 张图片至本地相册?<div class="confirm-title2">文字内容已复制</div>',[{yes:"是"},{no:'否'},{close:'关闭'}],function(type){
