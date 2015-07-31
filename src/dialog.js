@@ -238,7 +238,8 @@
 				// $(window).scroll(function() {
 				// 	_this.setPosition();
 				// })
-			$(window).keydown(function(e) {
+			$(document).keydown(function(e) {
+			console.log(e.keyCode )
 				if (e.keyCode === 27 && _this.showed) {
 					_this.hide();
 				}

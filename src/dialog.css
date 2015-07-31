@@ -16,7 +16,7 @@
 	100% { opacity: 0; }
 }
 .zoomIn { -webkit-animation-name: zoomIn; animation-name: zoomIn; }
-.zoomOut { -webkit-animation-name: zoomOut; animation-name: zoomOut; }
+.zoomOut { -webkit-animation-name: zoomOut; animation-name: zoomOut;display: none\0 !important; }
 .animated { -webkit-animation-duration: .5s; animation-duration: .5s; -webkit-animation-fill-mode: both; -ms-animation-fill-mode: both; -moz-animation-fill-mode: both; animation-fill-mode: both; }
 #confirmDialog{width: 350px;background-color: #fff;}
 .ui-confirm-title,.ui-alert-title{white-space:nowrap; text-align: center;font-size: 18px;font-weight: bold;color:#333;line-height: 40px;}
