@@ -74,3 +74,6 @@ js dialog弹窗
 		隐藏前的方法回调,content是浮层内容对象
 ###setPosition:function()
 		设置位置居中
+##事件
+###hide:
+	$('.ui-dialog').trigger('hide');触发弹窗的隐藏事件.
