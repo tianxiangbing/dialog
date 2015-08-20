@@ -239,11 +239,13 @@
 				// 	_this.setPosition();
 				// })
 			$(document).keydown(function(e) {
-			console.log(e.keyCode )
 				if (e.keyCode === 27 && _this.showed) {
 					_this.hide();
 				}
 			});
+			$(this.dialogContainer).on('hide',function(){
+				_this.hide();
+			})
 		},
 		dispose: function() {
 			this.dialogContainer.remove();
