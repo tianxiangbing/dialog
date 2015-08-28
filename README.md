@@ -50,30 +50,32 @@ js dialog弹窗
 #属性或方法
 ##属性
 ###trigger:
-		触发对象
+	触发对象
 ###target:
-		弹出内容，可以为#id,或者jquery对象
+	弹出内容，可以为#id,或者jquery对象
 ###mask:
-		是否有遮罩层
+	是否有遮罩层
 ###title:
-		标题
+	标题
 ###zIndex:
-		z-index
+	z-index
 ###closeTpl:
-		关闭html(默认:<span class="ui-dialog-close js-dialog-close">x</span>)
+	关闭html(默认:<span class="ui-dialog-close js-dialog-close">x</span>)
 ###titleTpl:
-		标题html(默认：<div class="ui-dialog-title"></div>) 
+	标题html(默认：<div class="ui-dialog-title"></div>) 
+###fixed:`bool`
+	是否固定位置，默认不固定
 ##方法及回调
 ###show:
-		显示弹层
+	显示弹层
 ###hide:
-		隐藏
+	隐藏
 ###beforeShow：function(content)
-		显示前的方法回调,content是浮层内容对象
+	显示前的方法回调,content是浮层内容对象
 ###beforeHide：function(content)
-		隐藏前的方法回调,content是浮层内容对象
+	隐藏前的方法回调,content是浮层内容对象
 ###setPosition:function()
-		设置位置居中
+	设置位置居中
 ##事件
 ###hide:
 	$('.ui-dialog').trigger('hide');触发弹窗的隐藏事件.
