@@ -4,7 +4,7 @@
 		<title>dialog  对话框弹层</title>
 		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, user-scalable=0, width=device-width"/>
 		<meta name="format-detection" content="telephone=no">
-		<link rel="stylesheet" type="text/css" href="../src/dialog.css">
+		<link rel="stylesheet" type="text/css" href="../dist/dialog.css">
 	</head>
 	<body>
 		<br/>
@@ -39,11 +39,11 @@
 		$('#btn_dialogjquery').Dialog({target:"#dialog-contentjq",mask:true,width:500,height:300,title:'标题',animate:true})
 		$('#btn_alert').click(function(){
 			$.alert('选好商品才能上传素材哦',true,function(){
-				alert('你点击了ok')
+				$.alert('你点击了ok')
 			})
 		});
 		$('#btn_alert2').click(function(){
-			$.alert('选好商品才能上传素材哦选好商品才能上传素材哦选好商品才能上传素材哦')
+			$.alert('提交成功，商品到货后第一时间发送短信至：18667040027')
 		});
 		$('#btn_confirm').click(function(){
 			$.confirm('下载全部 9 张图片至本地相册?<div class="confirm-title2">文字内容已复制</div>',[{yes:"是"},{no:'否'},{close:'关闭'}],function(type){
