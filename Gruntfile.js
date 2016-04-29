@@ -48,7 +48,7 @@ module.exports = function(grunt) {
 			flatten: true,
 			filter: 'isFile'
 		},
-		jquery:{
+		jquery: {
 			src: 'src/<%= pkg.name %>.js',
 			dest: 'dist/<%= pkg.name %>-jquery.js'
 		}
@@ -67,18 +67,29 @@ module.exports = function(grunt) {
 		src: ['dist/<%= pkg.name %>.js'],
 		dest: 'dist/<%= pkg.name %>-jquery.min.js'
 	};
-	config.watch={
-		scripts:{
-			files:['src/**.*'],
-			tasks:['default'],
-			options:{
+	config.sass = {
+		dist: {
+			files: [{
+				expand: true,
+				cwd: 'src',
+				src: ['*.scss'],
+				dest: 'dist',
+				ext: '.css'
+			}]
+		}
+	}
+	config.watch = {
+		scripts: {
+			files: ['src/**.*'],
+			tasks: ['default'],
+			options: {
 				livereload: true
 			}
 		},
-		html:{
-			files:['example/**.*'],
-			tasks:['default'],
-			options:{
+		html: {
+			files: ['example/**.*'],
+			tasks: ['default'],
+			options: {
 				livereload: true
 			}
 		}
@@ -90,7 +101,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	// grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-sass');
 
 	// 默认被执行的任务列表。
-	grunt.registerTask('default', ['uglify', 'cssmin', 'copy', 'uglify:uplifyJquery']);
+	grunt.registerTask('default', ['sass','uglify', 'cssmin', 'copy', 'uglify:uplifyJquery']);
 };

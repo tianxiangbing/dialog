@@ -79,3 +79,6 @@ js dialog弹窗
 ##事件
 ###hide:
 	$('.ui-dialog').trigger('hide');触发弹窗的隐藏事件.
+	
+*2016.4.29* v2.0.0
+	修改弹窗样式
