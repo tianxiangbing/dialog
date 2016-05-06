@@ -16,5 +16,9 @@
     "grunt-contrib-cssmin": "^0.12.2",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "~0.4.0"
+  },
+  "scripts":{
+    "prestart":"npm install",
+    "start":"node http.js"
   }
 }
