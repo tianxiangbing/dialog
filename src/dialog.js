@@ -338,8 +338,8 @@
 				if (isNaN(this.width)) {
 					this.width = (this.dialogContainer.outerWidth && this.dialogContainer.outerWidth()) || this.dialogContainer.width();
 				}
-				var clientHeight = this.settings.clientHeight || document.documentElement.clientHeight || document.body.clientHeight;
-				var clientWidth = this.settings.clientWidth || document.documentElement.clientWidth || document.body.clientWidth;
+				var clientHeight = $(window).height();
+				var clientWidth = $(window).width();
 				var ml = this.width / 2;
 				var mt = this.height / 2;
 				var left = clientWidth / 2 - ml;
