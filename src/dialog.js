@@ -93,7 +93,11 @@
 				}
 			}
 			action = '<table class="ui-dialog-action"><tr>' + btnstr + '</tr></table>';
-			html += action;
+			if(settings.position=="bottom"){
+				html=action+html;
+			}else{
+				html += action;
+			}
 			var options = $.extend({
 				target: html,
 				animate: true,
@@ -351,10 +355,16 @@
 				if (_this.settings.fixed) {
 					position = 'fixed';
 				}
+				var bottom = "auto";
+				if(_this.settings.position=="bottom"){
+					top="auto";
+					bottom=0;
+				}
 				_this.dialogContainer.css({
 					position: position,
 					top: top,
-					left: left
+					left: left,
+					bottom:bottom
 				});
 			}
 		}

@@ -65,6 +65,8 @@ js dialog弹窗
 	标题html(默认：<div class="ui-dialog-title"></div>) 
 ###fixed:`bool`
 	是否固定位置，默认不固定
+###position:'bottom'
+	固定底部显示,目前仅支持'bottom'值
 ##方法及回调
 ###show:
 	显示弹层

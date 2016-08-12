@@ -34,6 +34,7 @@
 		<input type="button" id="btn_alert2" value="alert定时关闭"/>
 		<input type="button" id="btn_confirm" value="confirm三种按钮"/>
 		<input type="button" id="btn_confirmdefault" value="confirm默认"/>
+		<input type="button" id="btn_confirmbottom" value="置底的confirm"/>
 		<div id="dialog-contentjq" style="display:none;">这是内容22</div>
 		<script>
 		$('#btn_dialogjquery').Dialog({target:"#dialog-contentjq",mask:true,width:500,height:300,title:'标题',animate:true})
@@ -56,6 +57,12 @@
 				$.alert('您点击了'+type);
 				this.hide();
 			});
+		})
+		$('#btn_confirmbottom').click(function(){
+			$.confirm('你确定要删除这条消息吗? ',null,function(type){
+				$.alert('您点击了'+type);
+				this.hide();
+			},{position:"bottom"});
 		})
 
 		</script>
