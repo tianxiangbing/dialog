@@ -354,6 +354,8 @@
 				var position = 'absolute';
 				if (_this.settings.fixed) {
 					position = 'fixed';
+				}else{
+					top= top+$(window) .scrollTop();
 				}
 				var bottom = "auto";
 				if(_this.settings.position=="bottom"){
