@@ -22,6 +22,10 @@ module.exports = function(grunt) {
 		build: {
 			src: ['src/<%= pkg.name %>.js', '!*.min.js'],
 			dest: 'dist/<%= pkg.name %>.min.js'
+		},
+		publish:{
+			src:['src/dialog.js'],
+			dest:'dialog.js'
 		}
 	};
 	config.cssmin = {

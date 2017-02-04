@@ -5,16 +5,18 @@
  * Date: 2015-03-16
  * Time: 20:27:54
  * Contact: 55342775@qq.com
+ * Desc: 确保代码最新及时修复bug，请去github上下载最新源码 https://github.com/tianxiangbing/dialog
  */
 ;
 (function(root, factory) {
 	//amd
 	if (typeof define === 'function' && define.amd) {
-		define(['$'], factory);
+		define([ "jquery" ], factory );
 	} else if (typeof exports === 'object') { //umd
 		module.exports = factory();
 	} else {
-		root.Dialog = factory(window.Zepto || window.jQuery || $);
+		//bower
+		root.Dialog = factory(jQuery );
 	}
 })(this, function($) {
 	$.fn.Dialog = function(settings) {
