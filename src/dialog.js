@@ -1,6 +1,7 @@
 /*
  * Created with Sublime Text 2.
- * license: http://www.lovewebgames.com/jsmodule/index.html
+ * github: https://github.com/tianxiangbing/dialog
+ * demo地址: http://www.lovewebgames.com/jsmodule/index.html
  * User: 田想兵
  * Date: 2015-03-16
  * Time: 20:27:54
