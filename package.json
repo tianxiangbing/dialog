@@ -1,6 +1,6 @@
 {
   "family": "tianxiangbing",
-  "name": "dialog",
+  "name": "jq-dialog",
   "description": "js dialog",
   "version": "2.1.1",
   "git": "https://github.com/tianxiangbing/dialog",
