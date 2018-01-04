@@ -14,7 +14,8 @@
 	if (typeof define === 'function' && define.amd) {
 		define([ "jquery" ], factory );
 	} else if (typeof exports === 'object') { //umd
-		module.exports = factory();
+		var jQuery = require('jquery');
+		module.exports = factory(jQuery);
 	} else {
 		//bower
 		root.Dialog = factory(jQuery );
