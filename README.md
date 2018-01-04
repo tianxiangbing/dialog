@@ -51,6 +51,8 @@ js dialog弹窗
 			this.hide();
 		});
 	})
+# NPM
+	npm install --save jq-dialog
 # 属性或方法
 ## 属性
 ### trigger:
